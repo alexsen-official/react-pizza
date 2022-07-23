@@ -1,0 +1,26 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.wrapper {
+  max-width: 1440px;
+  width: calc(100vw - 6rem);
+  margin: 3rem auto;
+  border-radius: 0.6rem;
+  background-color: $white;
+
+  main {
+    max-width: $content-width;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+  }
+
+  @include laptop {
+    width: calc(100vw - 4rem);
+    margin: 2rem auto;
+  }
+
+  @include tablet {
+    width: calc(100vw - 2rem);
+    margin: 1rem auto;
+  }
+}

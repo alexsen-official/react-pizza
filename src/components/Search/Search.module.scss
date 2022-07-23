@@ -1,0 +1,42 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.search {
+  max-width: 30rem;
+  position: relative;
+  flex: 1;
+
+  img {
+    max-width: 1.2rem;
+    max-height: 1.2rem;
+    position: absolute;
+    top: calc(50% - 0.6rem);
+    opacity: 0.2;
+
+    &.magnifier {
+      left: 1rem;
+    }
+
+    &.cross {
+      right: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  input {
+    min-width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.6rem;
+    border: 1px solid rgba($black, 0.2);
+    border-radius: 1.6rem;
+    font-weight: 600;
+    transition: border-color $duration ease-in-out;
+
+    &:focus {
+      border-color: rgba($black, 0.4);
+    }
+  }
+
+  @include tablet {
+    min-width: 80%;
+  }
+}

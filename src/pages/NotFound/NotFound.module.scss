@@ -1,0 +1,22 @@
+.root {
+  min-height: 30rem;
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .emoji {
+    font-size: 4rem;
+  }
+
+  .description {
+    max-width: 40rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .backBtn {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,47 @@
+@import 'variables';
+@import 'mixins';
+@import 'normalize';
+
+body {
+  background-color: $background;
+}
+
+button {
+  min-width: 6rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 1.6rem;
+  display: inline-block;
+  text-align: center;
+  background-color: $orange;
+  cursor: pointer;
+  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+
+  @include noselect();
+
+  &,
+  span {
+    color: $white;
+  }
+
+  i,
+  span,
+  path,
+  svg {
+    transition: all $duration ease-in-out;
+  }
+
+  &:hover {
+    background-color: darken($orange, 8%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: darken($orange, 12%);
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: auto;
+  }
+}

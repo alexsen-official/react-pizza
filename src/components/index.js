@@ -1,0 +1,11 @@
+export { default as App } from './App/App.component';
+export { default as CartEmpty } from './CartEmpty/CartEmpty.component';
+export { default as CartItem } from './CartItem/CartItem.component';
+export { default as Categories, categories } from './Categories/Categories.component';
+export { default as Header } from './Header/Header.component';
+export { default as Layout } from './Layout/Layout.component';
+export { default as Paginator } from './Paginator/Paginator.component';
+export { default as Pizza } from './Pizza/Pizza.component';
+export { default as Search } from './Search/Search.component';
+export { default as Skeleton } from './Skeleton/Skeleton.component';
+export { default as Sort, sortOptions } from './Sort/Sort.component';

@@ -1,0 +1,25 @@
+@import '../../scss/variables';
+
+.paginator {
+  gap: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    min-width: 2.5rem;
+    max-height: 2.5rem;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    &:not(.selected) {
+      border-color: $orange;
+      color: $orange;
+      background-color: $white;
+    }
+  }
+}

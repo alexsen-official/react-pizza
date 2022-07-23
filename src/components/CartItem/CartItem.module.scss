@@ -1,0 +1,79 @@
+@import '../../scss/variables';
+
+.root {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.thumbnail {
+  max-width: 6rem;
+}
+
+.info {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+  }
+
+  p {
+    color: darken($gray, 40%);
+  }
+}
+
+.count {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.circleBtn {
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 1rem;
+    max-height: 1rem;
+  }
+}
+
+.price {
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.removeBtn {
+  border: 1px solid $black;
+  border-radius: 50%;
+  opacity: 0.2;
+  background: none;
+  transition: all $duration ease-in-out;
+
+  &:hover {
+    opacity: 0.4;
+    background-color: $white;
+  }
+
+  &:active:not(:disabled) {
+    opacity: 0.2;
+    border-color: $white;
+    background-color: $black;
+
+    img {
+      filter: invert(1);
+    }
+  }
+}

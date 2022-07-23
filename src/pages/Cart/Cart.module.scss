@@ -1,0 +1,107 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.root {
+  max-width: 60%;
+  margin: 0 auto;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  gap: 0.5rem;
+  display: flex;
+
+  img {
+    min-width: 1.5rem;
+    filter: invert(1);
+  }
+}
+
+.clearBtn {
+  min-width: 8rem;
+  gap: 0.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  opacity: 0.3;
+  transition: all $duration ease-in-out;
+
+  img {
+    max-width: 1rem;
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: $black;
+  }
+
+  &:hover, &:active:not(:disabled) {
+    background: none;
+    opacity: 0.5;
+  }
+}
+
+.items {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+
+  .price {
+    color: $orange;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .backBtn {
+    min-width: 6rem;
+    padding: 0.8rem 1.6rem;
+    gap: 0.5rem;
+    border: 1px solid $black;
+    border-radius: 1.6rem;
+    display: flex;
+    opacity: 0.3;
+    transition: all $duration ease-in-out;
+
+    @include noselect();
+
+    span {
+      color: $black;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+      background-color: $black;
+
+      img {
+        filter: invert(1);
+      }
+
+      span {
+        color: $white;
+      }
+    }
+  }
+}

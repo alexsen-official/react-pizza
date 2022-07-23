@@ -1,0 +1,51 @@
+@import '../../scss/variables';
+
+.sort {
+  position: relative;
+}
+
+.label {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  img {
+    transition: transform ($duration * 2) ease-in-out;
+
+    &.upward {
+      transform: rotate(180deg);
+    }
+  }
+
+  span {
+    color: $orange;
+    border-bottom: 1px dashed $orange;
+    cursor: pointer;
+  }
+}
+
+.popup {
+  margin-top: 1rem;
+  padding: 0.6rem 0;
+  border-radius: 0.6rem;
+  position: absolute;
+  right: 0;
+  box-shadow: 0 0.2rem 1rem rgba($black, 0.1);
+  background-color: $white;
+  overflow: hidden;
+
+  li {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+
+    &.selected,
+    &:hover {
+      background-color: rgba($orange, 0.05);
+    }
+
+    &.selected {
+      font-weight: bold;
+      color: $orange;
+    }
+  }
+}
