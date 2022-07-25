@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { useRef } from 'react';
 import * as Redux from 'react-redux';
 
-import { setSort, sortSelector } from '../../redux/slices';
 import caretDown from '../../assets/images/caret-down.svg';
+import { setSort, sortSelector } from '../../redux/slices';
 import styles from './Sort.module.scss';
 
-export const sortOptions = [
+type ClickEvent = MouseEvent & {
+    path: Node[]
+};
+
+export const sortOptions: SortOption[] = [
     { name: 'popularity (asc)', key: 'rating', order: 'asc' },
     { name: 'popularity (desc)', key: 'rating', order: 'desc' },
     { name: 'price (asc)', key: 'price', order: 'asc' },
@@ -18,18 +21,20 @@ export const sortOptions = [
 export default function Sort() {
     const value = Redux.useSelector(sortSelector);
     const dispatch = Redux.useDispatch();
-    const sortRef = useRef();
+    const sortRef = React.useRef<HTMLDivElement>(null);
 
     const [visible, setVisible] = React.useState(false);
 
-    const setOption = (option) => {
+    const setOption = (option: SortOption) => {
         dispatch(setSort(option));
         setVisible(false);
     };
 
     React.useEffect(() => {
-        const listener = event => {
-            if (!event.path.includes(sortRef.current)) {
+        const listener = (mouseEvent: MouseEvent) => {
+            const event = mouseEvent as ClickEvent;
+
+            if (sortRef.current && !event.path.includes(sortRef.current)) {
                 setVisible(false);
             }
         };

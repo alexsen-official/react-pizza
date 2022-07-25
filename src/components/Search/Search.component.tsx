@@ -1,25 +1,25 @@
+import debounce from 'lodash.debounce';
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import debounce from 'lodash.debounce';
+import cross from '../../assets/images/cross.svg';
+import magnifier from '../../assets/images/magnifier.svg';
 
 import { resetQuery, setQuery } from '../../redux/slices';
-import magnifier from '../../assets/images/magnifier.svg';
-import cross from '../../assets/images/cross.svg';
 import styles from './Search.module.scss';
 
 export default function Search() {
     const [value, setValue] = React.useState('');
     const dispatch = Redux.useDispatch();
-    const inputRef = React.useRef();
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
     const onChangeQuery = React.useCallback(
-        debounce(query => {
+        debounce((query: string) => {
             dispatch(setQuery(query));
         }, 400),
-        []
+        [dispatch]
     );
 
-    const onChangeValue = event => {
+    const onChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         onChangeQuery(value);
     };
@@ -27,7 +27,7 @@ export default function Search() {
     const resetSearch = () => {
         setValue('');
         dispatch(resetQuery());
-        inputRef.current.focus();
+        inputRef.current?.focus();
     };
 
     return (

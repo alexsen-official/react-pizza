@@ -1,6 +1,6 @@
+import qs from 'qs';
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 
 import { categories, Categories, Paginator, Pizza, Skeleton, Sort, sortOptions } from '../../components';
@@ -15,9 +15,11 @@ import {
     setPage,
     setQuery,
     setSort,
-    sortSelector
+    sortSelector,
+    Status
 } from '../../redux/slices';
 
+import { useAppDispatch } from '../../redux/store';
 import styles from './Home.module.scss';
 
 export default function Home() {
@@ -32,7 +34,7 @@ export default function Home() {
     const isMounted = React.useRef(false);
     const isSearch = React.useRef(false);
 
-    const dispatch = Redux.useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -45,8 +47,10 @@ export default function Home() {
             );
 
             const categoryValue = categories.find(category =>
-                category.id === +query.category
+                category.id === Number(query.category)
             );
+
+            dispatch(setPage(Number(query.page)));
 
             if (sortValue) {
                 dispatch(setSort(sortValue));
@@ -56,15 +60,16 @@ export default function Home() {
                 dispatch(setCategory(categoryValue));
             }
 
-            dispatch(setPage(+query.page));
-            dispatch(setQuery(query.search));
+            if (query.search) {
+                dispatch(setQuery(query.search.toString()));
+            }
 
             isSearch.current = true;
         }
     }, [dispatch]);
 
     React.useEffect(() => {
-        const params = {
+        const params: SearchParams = {
             page,
             limit: pageLimit,
             sortBy: sort.key,
@@ -96,9 +101,9 @@ export default function Home() {
             </div>
 
             <div className={ styles.items }>
-                { status === 'loading'
-                    ? [...new Array(pageLimit)].map((_, index) => <Skeleton key={ index } />)
-                    : items.map(item => <Pizza key={ item.id } { ...item } />) }
+                { status === Status.LOADING
+                  ? [...new Array(pageLimit)].map((_, index) => <Skeleton key={ index } />)
+                  : items.map(item => <Pizza key={ item.id } { ...item } />) }
             </div>
 
             <Paginator pageCount={ 2 } />

@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 const initialState = {
     page: 1
@@ -12,7 +13,7 @@ export const paginatorSlice = createSlice({
             state.page++;
         },
 
-        setPage(state, action) {
+        setPage(state, action: PayloadAction<number>) {
             state.page = action.payload;
         },
 
@@ -22,7 +23,7 @@ export const paginatorSlice = createSlice({
     }
 });
 
-export const pageSelector = state => state.paginator.page;
+export const pageSelector = (state: RootState) => state.paginator.page;
 
 export const { nextPage, setPage, prevPage } = paginatorSlice.actions;
 export default paginatorSlice.reducer;

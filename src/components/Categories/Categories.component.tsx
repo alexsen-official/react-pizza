@@ -1,10 +1,9 @@
-import * as React from 'react';
 import * as Redux from 'react-redux';
-import { categorySelector, setCategory } from '../../redux/slices';
 
+import { categorySelector, setCategory } from '../../redux/slices';
 import styles from './Categories.module.scss';
 
-export const categories = [
+export const categories: Category[] = [
     { id: 0, name: 'All' },
     { id: 1, name: 'Meat' },
     { id: 2, name: 'Vegetarian' },

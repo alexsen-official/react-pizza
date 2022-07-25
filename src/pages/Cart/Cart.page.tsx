@@ -1,12 +1,11 @@
-import * as React from 'react';
 import * as Redux from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { CartEmpty, CartItem } from '../../components';
-import { cartSelector, clearCart } from '../../redux/slices';
 import caretLeft from '../../assets/images/caret-left.svg';
 import shoppingCart from '../../assets/images/shopping-cart.svg';
 import trashCan from '../../assets/images/trash-can.svg';
+
+import { CartEmpty, CartItem } from '../../components';
+import { cartSelector, clearCart } from '../../redux/slices';
 import styles from './Cart.module.scss';
 
 export default function Cart() {
@@ -49,7 +48,7 @@ export default function Cart() {
                     <span>Back</span>
                 </Link>
 
-                <button className={ styles.payBtn }>
+                <button>
                     Pay now
                 </button>
             </div>

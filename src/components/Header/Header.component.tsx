@@ -1,12 +1,11 @@
-import * as React from 'react';
 import * as Redux from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 import { Search } from '../';
 import pizzaLogo from '../../assets/images/pizza-logo.svg';
 import shoppingCart from '../../assets/images/shopping-cart.svg';
-import styles from './Header.module.scss';
 import { cartSelector } from '../../redux/slices';
+import styles from './Header.module.scss';
 
 export default function Header() {
     const { totalCount, totalPrice } = Redux.useSelector(cartSelector);
@@ -22,7 +21,6 @@ export default function Header() {
                     <p>The most delicious pizza</p>
                 </div>
             </Link>
-
 
             { pathname !== '/cart' && <Search /> }
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
+import plus from '../../assets/images/plus.svg';
 
 import { addItem, cartItemSelector } from '../../redux/slices';
-import plus from '../../assets/images/plus.svg';
 import styles from './Pizza.module.scss';
 
 const typeLabels = ['thin', 'traditional'];
 
-export default function Pizza({ id, imageUrl, title, types, sizes, price }) {
+export default function Pizza({ id, imageUrl, title, types, sizes, price }: Pizza) {
     const item = Redux.useSelector(cartItemSelector(id));
     const dispatch = Redux.useDispatch();
 
@@ -17,13 +17,14 @@ export default function Pizza({ id, imageUrl, title, types, sizes, price }) {
     const [selectedSize, selectSize] = React.useState(sizes[0]);
 
     const onAdd = () => {
-        const item = {
+        const item: CartItem = {
             id,
             imageUrl,
             title,
             price,
-            type: selectedType,
-            size: selectedSize
+            type: typeLabels[selectedType],
+            size: selectedSize,
+            count
         };
 
         dispatch(addItem(item));

@@ -1,14 +1,17 @@
-import * as React from 'react';
 import * as Redux from 'react-redux';
 
 import { nextPage, pageSelector, prevPage, setPage } from '../../redux/slices';
 import styles from './Paginator.module.scss';
 
-export default function Paginator({ pageCount }) {
+type PaginatorProps = {
+    pageCount: number;
+};
+
+export default function Paginator({ pageCount }: PaginatorProps) {
     const value = Redux.useSelector(pageSelector);
     const dispatch = Redux.useDispatch();
 
-    const pages = [...new Array(pageCount).keys()].map(page => page + 1);
+    const pages = Array.from(Array(pageCount).keys()).map(page => page + 1);
 
     return (
         <div className={ styles.paginator }>

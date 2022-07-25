@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 const initialState = {
     value: ''
@@ -8,7 +9,7 @@ export const searchSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {
-        setQuery(state, action) {
+        setQuery(state, action: PayloadAction<string>) {
             state.value = action.payload;
         },
 
@@ -18,7 +19,7 @@ export const searchSlice = createSlice({
     }
 });
 
-export const searchSelector = state => state.search.value;
+export const searchSelector = (state: RootState) => state.search.value;
 
 export const { setQuery, resetQuery } = searchSlice.actions;
 export default searchSlice.reducer;
